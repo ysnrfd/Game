@@ -1,4 +1,5 @@
 from rpg.game import Game
+from rpg.world import create_world
 
 
 def test_basic_movement_and_look():
@@ -36,3 +37,17 @@ def test_plugin_command_loads():
     assert "campfire_plugin" in result
     out = game.process_command("rest")
     assert "recover" in out
+
+
+def test_quest_kill_requirements_are_possible_from_world_spawns():
+    world = create_world()
+
+    enemy_counts: dict[str, int] = {}
+    for location in world.values():
+        for enemy in location.enemies:
+            enemy_counts[enemy.name] = enemy_counts.get(enemy.name, 0) + 1
+
+    for location in world.values():
+        for quest in location.quests:
+            available = enemy_counts.get(quest.target_enemy, 0)
+            assert available >= quest.required_kills
