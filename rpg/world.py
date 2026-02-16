@@ -19,6 +19,8 @@ def create_world() -> dict[str, Location]:
         exits={"south": "town_square", "north": "ruined_watchtower"},
         enemies=[
             Enemy("Wolf", 30, 8, 2, 20, 12, "A hungry gray wolf."),
+            Enemy("Wolf", 30, 8, 2, 20, 12, "A hungry gray wolf."),
+            Enemy("Wolf", 30, 8, 2, 20, 12, "A hungry gray wolf."),
             Enemy("Boar", 40, 9, 3, 24, 15, "A massive tusked boar."),
         ],
         items=[Item("Herb", "A medicinal herb restoring 20 HP.", value=5, heal_amount=20)],
@@ -40,7 +42,10 @@ def create_world() -> dict[str, Location]:
         name="Ruined Watchtower",
         description="A collapsed tower crawling with bandits and old treasures.",
         exits={"south": "old_forest", "east": "mountain_pass"},
-        enemies=[Enemy("Bandit", 55, 12, 4, 35, 30, "A ruthless scavenger.")],
+        enemies=[
+            Enemy("Bandit", 55, 12, 4, 35, 30, "A ruthless scavenger."),
+            Enemy("Bandit", 55, 12, 4, 35, 30, "A ruthless scavenger."),
+        ],
         items=[Item("Iron Sword", "Reliable steel blade.", value=25, attack_bonus=4)],
     )
 
